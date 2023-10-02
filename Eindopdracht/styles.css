@@ -125,7 +125,8 @@ a:hover {
 }
 
 .color {
-    background-color: none;
+    background-color: pink;
+    border-color: pink;
 }
 
 @media (max-width: 768px) {

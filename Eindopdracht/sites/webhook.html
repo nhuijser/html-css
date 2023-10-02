@@ -18,8 +18,9 @@
         <input id="title" class="textarea" required placeholder="embed title"><br>
         <textarea id="description" class="textarea" required placeholder="embed description" rows="3"
             cols="30"></textarea>
+        <br>
         <input type="color" id="colorpicker" class="color" value="#0000ff">
-        <br><br>
+        <br>
         <input type="submit" class="submit" value="Submit">
     </form>
     <script>
@@ -29,7 +30,9 @@
             const url = document.getElementById("url").value;
             const title = document.getElementById("title").value;
             const description = document.getElementById("description").value;
-            const color = document.getElementById("color").value;
+            const color = document.getElementById("colorpicker").value;
+            const realColor = parseInt(color, 16)
+
 
             // Send the data to your server-side script
             const data = {
@@ -37,7 +40,7 @@
                     {
                         "title": title,
                         "description": description,
-                        "color": color,
+                        "color": realColor,
                     }
 
                 ]
