@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Webhook</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Discord Webhook</h1>
+    </div>
+    <form class="forms" id="webhook">
+        <label class="footerName">Webhook URL</label><br>
+        <input id="url" class="textarea" required placeholder="Discord Webhook URL"><br>
+        <input id="title" class="textarea" required placeholder="embed title"><br>
+        <textarea id="description" class="textarea" required placeholder="embed description" rows="3"
+            cols="30"></textarea>
+        <input type="color" id="colorpicker" class="color" value="#0000ff">
+        <br><br>
+        <input type="submit" class="submit" value="Submit">
+    </form>
+    <script>
+        document.getElementById("webhook").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const url = document.getElementById("url").value;
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            const color = document.getElementById("color").value;
+
+            // Send the data to your server-side script
+            const data = {
+                "embeds": [
+                    {
+                        "title": title,
+                        "description": description,
+                        "color": color,
+                    }
+
+                ]
+            };
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Message sent to Discord!");
+                    } else {
+                        alert("Failed to send message to Discord.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        });
+    </script>
+    <hr>
+    <footer>
+        <div class="footerLeft">
+            <h1 class="footerName">Menu</h1>
+            <p><a href="../index.html">Home</a></p>
+            <p><a href="./contact.html">Contact</a></p>
+            <p><a href="webhook.html">Webhook Sender</a></p>
+        </div>
+        <div class="footerMid">
+            <h1 class="footerName">Motive</h1>
+            <p>Deze website is gemaakt voor een school opdracht.</p>
+        </div>
+        <div class="footerRight">
+            <h1 class="footerName">Contact Information</h1>
+            <p>06 13573607</p>
+            <p>huijsernathan@gmail.com</p>
+        </div>
+    </footer>
+</body>
+
+</html>
