@@ -30,9 +30,6 @@
             const url = document.getElementById("url").value;
             const title = document.getElementById("title").value;
             const description = document.getElementById("description").value;
-            const color = document.getElementById("colorpicker").value;
-            const realColor = parseInt(color, 16)
-
 
             // Send the data to your server-side script
             const data = {
@@ -40,7 +37,6 @@
                     {
                         "title": title,
                         "description": description,
-                        "color": realColor,
                     }
 
                 ]
